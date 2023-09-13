@@ -47,15 +47,9 @@ class HomeController extends AbstractController
         // prevent route from being accessed unless authenticated with developer role
         $this->denyAccessUnlessGranted('ROLE_DEVELOPER');
 
-        $client = HttpClient::create();
-
         $lambdaClient->Invoke(['FunctionName' => 'oeuvreart_python']);
 
-        //$result = $client
-
-
         $signedUrl = $uploaderHelper->getMosaicPublicPath();
-
 
         // render the home page with output string from Python script
         return $this->render('home/home.html.twig', [
