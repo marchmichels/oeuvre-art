@@ -48,10 +48,6 @@ class HomeController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_DEVELOPER');
 
         $client = HttpClient::create();
-        $response = $client->request(
-            'GET',
-            'https://api.github.com/repos/symfony/symfony-docs'
-        );
 
         $lambdaClient->Invoke(['FunctionName' => 'oeuvreart_python']);
 
