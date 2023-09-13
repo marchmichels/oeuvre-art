@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col-xl-6">
+
+
+                <div class="container w-75">
+                <h3>Contribute Artwork</h3>
+                <br>
+                <p>Use the form below to upload an image to contribute.</p>
+
+
+                    <div id="spinner" class="spinner-border">
+                <div id="loading" class="loading">
+
+                    {{ form_start(art_upload_form) }}
+                    <p>Select a .png .jpg or .jpeg file to upload</p>
+                    <div data-controller="content">{{ form_row(art_upload_form.artfile) }}</div>
+
+                        {{ form_row(art_upload_form.submit) }}
+
+
+                    {{ form_end(art_upload_form) }}
+                </div>
+                </div>
+
+            </div>
+
+            </div>
+
+
+
+            <div class="col-xl-6 container">
+
+
+                <div class="container w-75">
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+
+
+                        <h3>Content Guidelines</h3>
+                        <br>
+                        <p>Oeuvre Art is a public space and images uploaded to the website can be viewed by anyone in
+                            the world. Please use good judgement when choosing what to share. This website uses
+                            automated content moderation. After choosing an image to upload, Oeuvre Art will verify your
+                            image meets our content guidelines before you will be permitted upload it.</p>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6" id="image-upload">
+                                <img scr="" id="image" />
+                            </div>
+                            <div class="col-md-6">
+                                <h4 id="message" class="text-center"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div> <!-- right column -->
+
+        </div> <!-- page row -->
+    </div>
+
+
+
+    <script src="https://unpkg.com/@tensorflow/tfjs@2.6.0" type="text/javascript"></script>
+    <script src="https://unpkg.com/nsfwjs@2.3.0" type="text/javascript"></script>
+    <script src="{{ asset('www/js/content_check.js') }}"></script>
+
+{% endblock %}

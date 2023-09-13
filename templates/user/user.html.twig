@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container pt-5">
+        <h2>Manage My Account</h2>
+        <p>Username: <strong>{{ app.user.username }}</strong></p>
+        <p>Email: <strong>{{ app.user.email }}</strong></p>
+        <p>Change your password:</p>
+
+
+        {{ form_start(passForm) }}
+        {{ form_row(passForm.oldPassword) }}
+        {{ form_row(passForm.newPassword.first) }}
+        {{ form_row(passForm.newPassword.second) }}
+        <button class="btn btn-dark" type="submit">Change password</button>
+        {{ form_end((passForm)) }}
+
+
+        <br>
+        <p>
+            Deleting your account will delete all images you uploaded.
+        </p>
+        <a href="{{ path('user_delete') }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete your account?')">Delete my account</a>
+    </div>
+
+
+    <!-- container for image grid -->
+    <div class="container pt-5">
+        <p>Click on an image to delete</p>
+    <div class="row">
+    <!-- loop for each image in array -->
+        {% for id, url in artData %}
+
+        <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="thumbnail zoom del-container">
+                <a href="{{ path('remove_art', {'id': id}) }}" onclick="return confirm('Are you sure you want to delete?')">
+                <img src="{{ url }}" class="img-fluid pb-5 del-image" alt="artwork">
+
+                <div class = del-middle>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                </div>
+                </a>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+    </div>
+    </div>
+
+    <script src="{{ asset('www/js/confirm.js') }}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container pt-5 w-75">
+
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+
+
+        <h2>Register</h2>
+
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.username) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+
+        <div class="container">
+            <h5>Oeuvre Art Terms of Use</h5>
+            <ul class="terms">
+                <li>Don't do anything unlawful.</li>
+                <li>Foster a positive, inclusive, safe environment.</li>
+            </ul>
+        </div>
+
+        {{ form_row(registrationForm.agreeTerms, {
+            label: 'I agree to the terms of use'
+        }) }}
+
+        <button type="submit" class="btn btn-dark">Register</button>
+        {{ form_end(registrationForm) }}
+
+
+
+
+        <div class="row py-5 text-center">
+            <div class="col">
+                <p>Already have an account? Click the link to Login!</p>
+                <a href="{{ path('app_login') }}" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+
+
+
+    <div class="vstack gap-3">
+        <div class="text-center pt-2">
+            <div class="container">
+                <h2>Welcome to Oeuvre Art!</h2>
+
+
+                <p>
+                    Oeuvre Art is a collaborative art experience where users can share their artwork to be combined with artwork from other users into a single collective artwork.
+                </p>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+        {# TODO: Replace local asset with S3 public url (upload helper) #}
+        <div class="pt-2 text-center">
+        <img style="max-height: 60vh" class="img-fluid" src="{{ image_url }}" alt="Collaborative Artwork">
+        </div>
+
+
+
+
+        {% if is_granted('ROLE_DEVELOPER') %}
+
+
+            <div class="text-center pb-2">
+                <a href="{{ path('regenerate') }}" class="btn btn-warning">Regenerate Art</a>
+            </div>
+
+
+        {% endif %}
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

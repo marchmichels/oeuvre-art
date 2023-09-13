@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+    <div style="background-color: lightgrey">
+
+
+        <!-- artist contributions heading -->
+        <div class="container pt-5 text-center">
+            <h2>Artist Contributions</h2>
+            <p>Click on an image for more information</p>
+        </div>
+
+        <!-- container for image grid -->
+        <div class="container pt-5">
+            <div class="row">
+                <!-- loop for each image in array -->
+                {% for id, url in artData %}
+
+                    <div class="col-md-12 col-lg-6 col-xl-3 pb-5 thumbnail zoom">
+
+
+                        <a href="{{ path('art_detail', {'id': id}) }}">
+                            <img src="{{ url }}" alt="artwork" class="img-fluid">
+                        </a>
+
+
+                    </div>
+
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

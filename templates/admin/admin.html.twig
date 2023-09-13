@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container pt-5">
+        <h2>
+            Admin Dashboard
+        </h2>
+    </div>
+
+
+    <div class="container pt-5">
+        <h5>Click on a user to delete</h5>
+    <div class="row">
+    <!-- loop for each image in array -->
+    {% for user in users %}
+
+        <div class=" col-xl-6 col-xxl-3">
+                    <a href="{{ path('admin_user_delete', {'id': user.id}) }}" class="btn btn-danger mt-1" onclick="return confirm('Are you sure you want to delete this account?')">
+                        {{ user.userIdentifier }}
+                    </a>
+        </div>
+
+    {% endfor %}
+
+
+    </div>
+    </div>
+
+
+    <div class="container pt-5">
+        <h5>Click on an image to delete</h5>
+    <div class="row">
+    <!-- loop for each image in array -->
+    {% for id, url in arts %}
+
+        <div class="col-lg-3 col-md-6">
+
+
+            <div class="thumbnail zoom del-container">
+                <a href="{{ path('admin_art_delete', {'id': id}) }}" onclick="return confirm('Are you sure you want to delete?')">
+                    <img src="{{ url }}" class="img-fluid pb-5 del-image" alt="artwork">
+
+                    <div class = del-middle>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+
+    {% endfor %}
+
+
+    </div>
+    </div>
+
+
+
+{% endblock %}

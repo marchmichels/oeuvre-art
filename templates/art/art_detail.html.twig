@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="container pt-5">
+
+        <div class="row pb-2">
+            <div class="col"><a href="{{ path('art') }}" class="btn btn-dark">Return to Gallery</a></div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <img src="{{ artDetail }}" class="img-fluid pb-2" alt="artwork">
+                <p class="text-center bg-secondary bg-gradient text-light">Uploaded by: {{ userName }}
+                    on {{ uploadDate }}</p>
+
+            </div>
+            <div class="col-md-12 col-xl-6">
+
+
+                <!-- -->
+                <!-- container for image grid -->
+                <div class="container">
+                    <div class="row">
+                        <p class="text-center bg-secondary bg-gradient text-light">More art uploaded
+                            by {{ userName }}</p>
+
+
+                        {% if artData %}
+
+                            <!-- loop for each image in array -->
+                            {% for id, url in artData %}
+
+
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="thumbnail zoom">
+                                        <a href="{{ path('art_detail', {'id': id}) }}">
+                                            <img src="{{ url }}" alt="artwork" class="img-fluid pb-5">
+                                        </a>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+
+                        {% else %}
+                            <p class="text-center bg-secondary bg-gradient text-light">This user hasn't uploaded any
+                                other artwork.</p>
+
+
+                        {% endif %}
+
+
+                    </div>
+                </div>
+                <!-- -->
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

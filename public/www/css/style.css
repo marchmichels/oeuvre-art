@@ -1,0 +1,84 @@
+
+.loading {
+    visibility: hidden;
+}
+.nav-item {
+    font-family: 'Press Start 2P', cursive;
+    font-size: .8rem;
+    padding-right: 2rem;
+}
+
+.footer {
+    font-family: 'Press Start 2P', cursive;
+    font-size: .5rem;
+
+}
+
+.btn {
+    font-family: 'Press Start 2P', cursive;
+    font-size: .8rem;
+
+}
+
+.blur {
+    -webkit-filter: blur(15px); /* Safari 6.0 - 9.0 */
+    filter: blur(15px);
+}
+p {
+    font-family: 'Press Start 2P', cursive;
+    font-size: .8rem;
+}
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+}
+
+h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+}
+.terms {
+    font-family: 'Press Start 2P', cursive;
+    font-size: .8rem;
+}
+
+.zoom:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+
+.del-container {
+    position: relative;
+}
+
+.del-image {
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.del-middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.del-container:hover .del-image {
+    opacity: 0.3;
+}
+
+.del-container:hover .del-middle {
+    opacity: 0.8;
+}
